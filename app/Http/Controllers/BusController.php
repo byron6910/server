@@ -20,8 +20,12 @@ class BusController extends Controller
     {
         if($request){
         $query=trim($request->get('searchText'));//trim, quita espacios entre inicio y final
-        $buses=DB::table('bus')->where('nombre','like','%'.$query.'%')
-        //->where ('condicion','=','1')        
+        $buses=DB::table('bus as b')->where('nombre','like','%'.$query.'%')
+        //->where ('condicion','=','1')  
+        ->join('cooperativa as c','b.id_cooperativa','c.id_cooperativa')
+        ->select('b.id_bus','b.marca','b.capacidad','b.condicion','c.nombre as cooperativa')      
+  
+        
         ->orderBy('id_bus','desc')
         ->paginate(8);
         return view('bus.index',['buses'=>$buses,'searchText'=>$query]);
@@ -36,7 +40,9 @@ class BusController extends Controller
      */
     public function create()
     {
-        return view('bus.create');
+        $cooperativas=DB::table('cooperativa')->get();
+        
+        return view('bus.create',['cooperativas'=>$cooperativas]);
     }
 
     /**
@@ -49,7 +55,7 @@ class BusController extends Controller
     {
         $bus=new Bus();
         $bus->id_bus=$request->get('id_bus');
-        $bus->nombre=$request->get('nombre');
+        $bus->marca=$request->get('marca');
         $bus->capacidad=$request->get('capacidad');
         $bus->condicion=$request->get('condicion');        
         $bus->id_cooperativa=$request->get('id_cooperativa');
@@ -87,7 +93,9 @@ class BusController extends Controller
      */
     public function edit($id)
     {
-        return view('bus.edit',["bus"=>Bus::findOrFail($id)]);
+       $bus=Bus::findOrFail($id);
+       $cooperativas=DB::table('cooperativa')->get();
+        return view('bus.edit',["bus"=>$bus,"cooperativas"=>$cooperativas]);
     }
 
     /**
@@ -100,7 +108,7 @@ class BusController extends Controller
     public function update(BusRequest $request, $id)
     {
         $bus=Bus::findOrFail($id);
-        $bus->nombre=$request->get('nombre');
+        $bus->marca=$request->get('marca');
         $bus->capacidad=$request->get('capacidad');
         $bus->condicion=$request->get('condicion');                
         $bus->id_cooperativa=$request->get('id_cooperativa');

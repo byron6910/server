@@ -26,7 +26,7 @@ class BusRequest extends FormRequest
         return [
             
             'id_bus'=>'max:6|required',
-            'nombre'=>'required',
+            'marca'=>'required',
             'capacidad'=>'required',
             'condicion'=>'required',
             'id_cooperativa'=>'required'

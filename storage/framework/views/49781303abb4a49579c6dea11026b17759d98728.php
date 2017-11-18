@@ -71,9 +71,15 @@
 
         </div>
 
+        <div class="form-group">
+                <label for="foto">Foto:</label>
+                <input type="file" class="form-control"  name="foto">
+                
+            </div>
+
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                <div class="form-group">
-                    <label for="correo">PLACA:</label>
+                    <label for="id_bus">PLACA:</label>
                     <<select name="id_bus" class="form-control">
                         <?php $__currentLoopData = $buses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bus): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <option value="<?php echo e($bus->id_bus); ?> "> <?php echo e($bus->id_bus); ?></option>

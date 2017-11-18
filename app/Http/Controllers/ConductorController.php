@@ -7,6 +7,7 @@ use App\Conductor;
 use App\Http\Requests\ConductorRequest;
 use DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 
 class ConductorController extends Controller
 {
@@ -16,7 +17,7 @@ class ConductorController extends Controller
         $query=trim($request->get('searchText'));//trim, quita espacios entre inicio y final
         $conductores=DB::table('conductor as c')
         ->join('bus as b','c.id_bus','=','b.id_bus')
-        ->select('c.id_conductor','c.nombre','c.apellido','c.telefono','c.correo','c.direccion','b.id_bus as placa')
+        ->select('c.id_conductor','c.nombre','c.apellido','c.telefono','c.correo','c.direccion','c.foto','b.id_bus as placa')
         ->where('c.nombre','like','%'.$query.'%')
                 
         ->orderBy('id_conductor','desc')
@@ -53,6 +54,8 @@ class ConductorController extends Controller
         $conductor->direccion=$request->get('direccion');
         $conductor->correo=$request->get('correo');
         $conductor->direccion=$request->get('direccion');
+        $conductor->foto=$request->get('foto');
+        
         $conductor->id_bus=$request->get('id_bus');
         
         $conductor->save();
@@ -111,6 +114,7 @@ class ConductorController extends Controller
         $conductor->direccion=$request->get('direccion');
         $conductor->correo=$request->get('correo');
         $conductor->direccion=$request->get('direccion');
+        $conductor->foto=$request->get('foto');        
         $conductor->id_bus=$request->get('id_bus');
         
    

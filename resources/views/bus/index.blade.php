@@ -14,7 +14,7 @@
                 <table class="table table-striped table-bordered table-condensed table-hover">
                     <thead>
                         <th>Matricula </th>
-                        <th>Nombre</th>
+                        <th>Marca</th>
                         <th>Capacidad</th>
                         <th>Condicion</th>
                         <th>Cooperativa</th>
@@ -23,10 +23,10 @@
                     @foreach($buses as $bus)
                     <tr>
                         <td> {{$bus->id_bus}}</td>
-                        <td> {{$bus->nombre}}</td>
+                        <td> {{$bus->marca}}</td>
                         <td> {{$bus->capacidad}}</td>
                         <td> {{$bus->condicion}}</td>
-                        <td> {{$bus->id_cooperativa}}</td>
+                        <td> {{$bus->cooperativa}}</td>
                         
                         <td>
                         <a href="{{URL::action('BusController@edit',$bus->id_bus)}}"><button class="btn btn-info">Editar </button></a>

@@ -24,8 +24,8 @@
             </div>
             
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" value="{{$bus->nombre}}" placeholder="Escriba Nombre" name="nombre">
+                <label for="marca">Marca:</label>
+                <input type="text" class="form-control" value="{{$bus->marca}}" placeholder="Escriba Marca" name="marca">
 
             </div>
            
@@ -42,12 +42,18 @@
 
             </div>
 
-
             <div class="form-group">
-                <label for="id_cooperativa">Id Cooperativa:</label>
-                <input type="number" class="form-control" value="{{$bus->id_cooperativa}}" placeholder="Escriba Cooperativa" name="id_cooperativa">
-                
-            </div>
+                <label for="id_cooperativa">Cooperativa:</label>
+                <select name="id_cooperativa" class="form-control">
+                    @foreach($cooperativas as $cooperativa)
+                        @if($cooperativa->id_cooperativa==$bus->id_origen_destino)
+                    <option value="{{$cooperativa->id_cooperativa}} "selected> {{$cooperativa->nombre}}</option>
+                        @else
+                    <option value="{{$cooperativa->id_cooperativa}} "> {{$cooperativa->nombre}}</option>
+                        @endif
+                    @endforeach
+                </select>
+             </div>
 
             
             <div class="form-group">

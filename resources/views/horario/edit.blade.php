@@ -37,7 +37,7 @@
             
                <div class="form-group">
                     <label for="id_origen_destino">OrigenDestino:</label>
-                    <<select name="id_origen_destino" class="form-control">
+                    <select name="id_origen_destino" class="form-control">
                         @foreach($origenes as $origen)
                             @if($origen->id_origen_destino==$horario->id_origen_destino)
                         <option value="{{$origen->id_origen_destino}} "selected> {{$origen->origen.'-'. $origen->destino}}</option>

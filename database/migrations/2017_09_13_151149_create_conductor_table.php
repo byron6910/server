@@ -21,6 +21,7 @@ class CreateConductorTable extends Migration
             $table->integer('telefono')->length(10)->unsigned();
             $table->string('direccion',45);
             $table->string('correo',45);
+            $table->string('foto');
             
             $table->integer('id_bus')->length(10)->unsigned();
             $table->foreign('id_bus')->references('id_bus')->on('bus')

@@ -24,12 +24,13 @@ class ConductorRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_conductor'=>'min:10|required|unique:conductor,correo',
+            'id_conductor'=>'max:10|required|unique:conductor,correo',
             'nombre'=>'required',
             'apellido'=>'required',
             'telefono'=>'max:10|required',
             'direccion'=>'required',
             'correo'=>'required|email|unique:conductor,id_conductor',
+            'foto'=>'mimes:jpeg,bmp,png',//formato archivos
             'id_bus'=>'required'
 
 

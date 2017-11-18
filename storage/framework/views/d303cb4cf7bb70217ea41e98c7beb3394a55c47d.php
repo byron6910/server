@@ -13,7 +13,7 @@
                 <table class="table table-striped table-bordered table-condensed table-hover">
                     <thead>
                         <th>Matricula </th>
-                        <th>Nombre</th>
+                        <th>Marca</th>
                         <th>Capacidad</th>
                         <th>Condicion</th>
                         <th>Cooperativa</th>
@@ -22,10 +22,10 @@
                     <?php $__currentLoopData = $buses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bus): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td> <?php echo e($bus->id_bus); ?></td>
-                        <td> <?php echo e($bus->nombre); ?></td>
+                        <td> <?php echo e($bus->marca); ?></td>
                         <td> <?php echo e($bus->capacidad); ?></td>
                         <td> <?php echo e($bus->condicion); ?></td>
-                        <td> <?php echo e($bus->id_cooperativa); ?></td>
+                        <td> <?php echo e($bus->cooperativa); ?></td>
                         
                         <td>
                         <a href="<?php echo e(URL::action('BusController@edit',$bus->id_bus)); ?>"><button class="btn btn-info">Editar </button></a>

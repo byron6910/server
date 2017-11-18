@@ -24,7 +24,7 @@ class BusSeeder extends Seeder
             Bus::create([
 // para relacionar dejar que sea autoincrementalble
               //  'id_bus'=>$faker->randomNumber(9,false),
-                'nombre'=>$faker->firstName(),
+                'marca'=>$faker->firstName(),
                 'capacidad'=>$faker->numberBetween(20,48),
                 'condicion'=>$faker->boolean(),
                 'id_cooperativa'=>$faker->numberBetween(1,$cantidad),

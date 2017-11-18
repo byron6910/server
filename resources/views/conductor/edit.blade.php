@@ -54,6 +54,17 @@
                 
             </div>
 
+            <div class="form-group">
+                
+                <label for="foto">Foto:</label>
+                <input type="file" class="form-control"  name="foto">
+                @if(($conductor->foto)!="")
+                    <img src="{{asset('imagenes/conductores/fotos/'.$conductor->foto)}}"  height="100px" width="100px">
+                    <p> {{$conductor->foto}}<p>
+                @endif
+                
+            </div>
+
         
             
                <div class="form-group">

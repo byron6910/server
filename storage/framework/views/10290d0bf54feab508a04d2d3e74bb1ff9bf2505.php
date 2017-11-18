@@ -18,7 +18,8 @@
                         <th>Telefono</th>
                         <th>Direccion</th>
                         <th>Correo</th>
-                        <th>Bus PLACA</th>                        
+                        <th>Bus PLACA</th>  
+                        <th>Foto</th>                      
                         <th>Opciones</th>
                     </thead>
                     <?php $__currentLoopData = $conductores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $conductor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -29,7 +30,13 @@
                         <td> <?php echo e($conductor->telefono); ?></td>
                         <td> <?php echo e($conductor->direccion); ?></td>
                         <td> <?php echo e($conductor->correo); ?></td>
+                                             
                         <td> <?php echo e($conductor->placa); ?></td>
+
+                        <td> 
+                        <img src="<?php echo e(asset('imagenes/conductores/fotos/'.$conductor->foto)); ?>" alt="<?php echo e($conductor->foto); ?>" 
+                        height="100px" width="100px" class="img-thumbnail">
+                        </td>
                         
                         <td>
                         <a href="<?php echo e(URL::action('ConductorController@edit',$conductor->id_conductor)); ?>"><button class="btn btn-info">Editar </button></a>

@@ -24,8 +24,8 @@
             </div>
             
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" placeholder="Escriba Nombre" name="nombre">
+                <label for="marca">Marca:</label>
+                <input type="text" class="form-control" placeholder="Escriba Nombre" name="marca">
 
             </div>
            
@@ -43,11 +43,17 @@
             </div>
 
 
-            <div class="form-group">
-                <label for="id_cooperativa">Id Cooperativa:</label>
-                <input type="number" class="form-control" placeholder="Escriba Cooperativa" name="id_cooperativa">
-                
-            </div>
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                 <div class="form-group">
+                     <label for="id_cooperativa">Cooperativa:</label>
+                        <select name="id_cooperativa" class="form-control">
+                     <?php $__currentLoopData = $cooperativas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cooperativa): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($cooperativa->id_cooperativa); ?> "> <?php echo e($cooperativa->nombre); ?></option>
+
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                 </div>
+             </div>
 
             
             <div class="form-group">

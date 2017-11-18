@@ -15,7 +15,7 @@ class CreateBusTable extends Migration
     {
         Schema::create('bus', function (Blueprint $table) {
             $table->increments('id_bus');
-            $table->string('nombre');            
+            $table->string('marca');            
             $table->integer('capacidad')->length(10)->unsigned();
             $table->boolean('condicion');                        
             $table->integer('id_cooperativa')->length(10)->unsigned();

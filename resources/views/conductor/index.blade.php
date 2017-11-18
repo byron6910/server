@@ -19,7 +19,8 @@
                         <th>Telefono</th>
                         <th>Direccion</th>
                         <th>Correo</th>
-                        <th>Bus PLACA</th>                        
+                        <th>Bus PLACA</th>  
+                        <th>Foto</th>                      
                         <th>Opciones</th>
                     </thead>
                     @foreach($conductores as $conductor)
@@ -30,7 +31,13 @@
                         <td> {{$conductor->telefono}}</td>
                         <td> {{$conductor->direccion}}</td>
                         <td> {{$conductor->correo}}</td>
+                                             
                         <td> {{$conductor->placa}}</td>
+
+                        <td> 
+                        <img src="{{asset('imagenes/conductores/fotos/'.$conductor->foto)}}" alt="{{$conductor->foto}}" 
+                        height="100px" width="100px" class="img-thumbnail">
+                        </td>
                         
                         <td>
                         <a href="{{URL::action('ConductorController@edit',$conductor->id_conductor)}}"><button class="btn btn-info">Editar </button></a>

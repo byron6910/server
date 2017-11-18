@@ -32,7 +32,7 @@ class ConductorSeeder extends Seeder
                 
                 'correo'=>$faker->email(),
                 
-                
+                'foto'=>$faker->word(),
                 'id_bus'=>$faker->numberBetween(1,$cantidad),
 
 
