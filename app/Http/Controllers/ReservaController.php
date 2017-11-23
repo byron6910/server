@@ -1,8 +1,12 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReservaRequest;
+use DB;
+use Illuminate\Support\Facades\Redirect;
 use App\Reserva;
 
 class ReservaController extends Controller
@@ -12,9 +16,22 @@ class ReservaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request){
+        $query=trim($request->get('searchText'));//trim, quita espacios entre inicio y final
+        $reservas=DB::table('reserva as r')
+        ->join('clientes as c','c.ci','=','r.ci')
+        ->join('viaje as v','v.id_viaje','=','r.id_viaje')
+        
+        ->select('r.id_reserva','r.fecha_reserva','r.estado','r.cantidad','r.asiento',DB::raw('CONCAT(c.nombre," ",c.apellido) as Nombre') ,'c.telefono as telefono','v.id_viaje as id_viaje')
+        ->where('r.estado','like','%'.$query.'%')
+         
+        ->orderBy('id_reserva','desc')
+        ->paginate(8);
+        return view('reserva.index',['reservas'=>$reservas,'searchText'=>$query]);
+        
+        }
     }
 
     /**
@@ -24,7 +41,13 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        $viajes=DB::table('viaje')->where('estado','=','1')->get();
+        $reservas=DB::table('reserva')->where('estado','=','1')->get();
+        $clientes=DB::table('clientes')->get();
+        
+        return view('reserva.create',['viajes'=>$viajes,'reservas'=>$reservas,'clientes'=>$clientes]);
+
+    
     }
 
     /**
@@ -33,9 +56,23 @@ class ReservaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservaRequest $request)
     {
-        //
+        $reserva=new Reserva();
+        $reserva->id_reserva=$request->get('id_reserva');
+        $reserva->fecha_reserva=$request->get('fecha_reserva');        
+        $reserva->estado=$request->get('estado');
+        $reserva->cantidad=$request->get('cantidad');
+        $reserva->asiento=$request->get('asiento');
+        
+        $reserva->ci=$request->get('ci');
+        $reserva->id_viaje=$request->get('id_viaje');        
+        
+       
+        
+        $reserva->save();
+
+        return Redirect::to('reserva');
     }
 
     /**
@@ -46,11 +83,16 @@ class ReservaController extends Controller
      */
     public function show($id)
     {
-        //obtener todoso los datos incluido la foranea
-        $reserva=Reserva::find($id);
-        $reserva->ci;
-        $reserva->id_reserva;
-        return view('reserva.index',['reserva'=>$reserva]);
+        $reserva=reserva::find($id);
+        
+        $response=['reserva'=>$reserva];
+        
+
+        if(!$reserva){
+            return response()->json(['mensaje'=>'no se encontro el reserva'],404);
+        }
+
+        return response()->json($response,200);
     }
 
     /**
@@ -61,7 +103,12 @@ class ReservaController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $reserva=Reserva::findOrFail($id);
+        $clientes=DB::table('clientes')->get();
+        $viajes=DB::table('viaje')->get();
+        
+        return view('reserva.edit',['reserva'=>$reserva,'clientes'=>$clientes,'viajes'=>$viajes]);
     }
 
     /**
@@ -71,9 +118,22 @@ class ReservaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservaRequest $request, $id)
     {
-        //
+        $reserva=reserva::findOrFail($id);
+        $reserva->fecha_reserva=$request->get('fecha_reserva');        
+        $reserva->estado=$request->get('estado');
+        $reserva->cantidad=$request->get('cantidad');
+        $reserva->asiento=$request->get('asiento');
+        
+        $reserva->ci=$request->get('ci');
+        $reserva->id_viaje=$request->get('id_viaje');             
+        
+   
+        $reserva->update();
+        
+        return Redirect::to('reserva');
+        
     }
 
     /**
@@ -84,6 +144,12 @@ class ReservaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reserva=Reserva::findOrFail($id);
+        $reserva->delete();
+        //  $bus->condicion='0';
+        //  $bus->update();
+        return Redirect::to('reserva');
+
+
     }
 }

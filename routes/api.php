@@ -25,7 +25,7 @@ Route::resource('cooperativa', 'CooperativaController');
 
 
 Route::resource('reserva', 'ReservaController');
-Route::resource('usuarios', 'UsuarioController');
+Route::resource('cliente', 'ClienteController');
 Route::resource('viaje', 'ViajeController');
 
 Route::resource('origen_destino', 'OrigenDestinoController');

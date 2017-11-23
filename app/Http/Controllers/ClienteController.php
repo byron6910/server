@@ -33,7 +33,9 @@ class ClienteController extends Controller
     {
         if($request){
             $query=trim($request->get('searchText'));//trim, quita espacios entre inicio y final
-            $clientes=DB::table('clientes')->where('nombre','like','%'.$query.'%')
+            $clientes=DB::table('clientes')
+            ->where('nombre','like','%'.$query.'%')
+            ->orwhere('ci','like','%'.$query.'%')
             //->where ('condicion','=','1')        
             ->orderBy('ci','desc')
             ->paginate(8);
@@ -101,7 +103,7 @@ class ClienteController extends Controller
                 return response()->json(['mensaje'=>'no se encontro el cliente'],404);
             }
     
-            return response()->json($response,200);
+            return Redirect::to('cliente.show');
         }
     
         /**

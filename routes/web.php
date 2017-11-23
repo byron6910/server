@@ -42,11 +42,11 @@ Route::resource('horario','HorariosController');
 
 //para el login
 
- Route::post('/usuarios/signin',['uses'=>'UsuarioController@signin']);
+// Route::post('/usuarios/signin',['uses'=>'UsuarioController@signin']);
 // Route::get('/usuarios',['uses'=>'UsuarioController@index']);
 
 
-Route::post('/cooperativa/form',['uses'=>'CooperativaController@form']);
+//Route::post('/cooperativa/form',['uses'=>'CooperativaController@form']);
 //Route::match(['get','post'],'cooperativa/form','CooperativaController@form');
 //Route::get('cooperativa/form','CooperativaController@create');
 

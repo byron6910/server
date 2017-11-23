@@ -47,15 +47,15 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Juan Carlos Arcila Díaz</span>
+                  <span class="hidden-xs">Administrador</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     
                     <p>
-                      www.incanatoit.com - Desarrollando Software
-                      <small>www.youtube.com/jcarlosad7</small>
+                      www.busesec.com - Desarrollando Software
+                      <small>www.youtube.com/</small>
                     </p>
                   </li>
                   
@@ -91,7 +91,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo e('cooperativa'); ?>"><i class="fa fa-circle-o"></i> Cooperativa</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Cooperativa</a></li>
                 <li><a href="origen_destino"><i class="fa fa-circle-o"></i> Origen Destino</a></li>
               </ul>
             </li>

@@ -15,16 +15,18 @@ class CreateReservaTable extends Migration
     {
         Schema::create('reserva', function (Blueprint $table) {
             $table->increments('id_reserva');
-            $table->integer('num_reserva')->length(10)->unsigned();
+            $table->date('fecha_reserva');
             $table->boolean('estado');
-            
+            $table->integer('cantidad')->length(10)->unsigned();
+            $table->integer('asiento')->length(10)->unsigned();
+
             $table->integer('ci')->unsigned();
             $table->foreign('ci')->references('ci')->on('clientes')
             ->onDelete('cascade');
 
-            $table->integer('id')->unsigned();
-            $table->foreign('id')->references('id')->on('users')
-            ->onDelete('cascade');
+            // $table->integer('id')->unsigned();
+            // $table->foreign('id')->references('id')->on('users')
+            // ->onDelete('cascade');
 
             $table->integer('id_viaje')->length(10)->unsigned();
             $table->foreign('id_viaje')->references('id_viaje')->on('viaje')
