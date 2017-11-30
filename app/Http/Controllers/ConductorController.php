@@ -9,8 +9,15 @@ use DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 
+//use Intervention\Image\ImageManagerStatic as Image;
+use Image;
 class ConductorController extends Controller
 {
+
+    public function __construct(){
+       $this->middleware('admin1',['only'=>['index','store','update','destroy']]);
+     }
+     
     public function index(Request $request)
     {
         if($request){
@@ -56,8 +63,36 @@ class ConductorController extends Controller
         $conductor->direccion=$request->get('direccion');
         $conductor->foto=$request->get('foto');
         
+        // if($request->hasFile('foto')){
+        // $extension=$request->file('foto')->getClientOriginalExtension();
+        
+        // $file_name=$conductor->id_conductor.'.'.$extension;
+        
+        // Image::make($request->file('foto'))
+        // ->resize(300,200)
+        // ->save('/imagenes/conductores/fotos');
+        // $conductor->foto=$extension;
+        // }
+        
         $conductor->id_bus=$request->get('id_bus');
         
+        if($request->hasFile('foto')){
+            
+            $foto=$request->file('foto');
+            $extension=time().'.'.$foto->getClientOriginalExtension();
+            Image::make($foto)->resize(200,200)->save(public_path('imagenes/conductores/fotos/'.$extension));
+         
+            $conductor->foto=$extension;
+            $conductor->save();
+        }
+        
+      /*  if(Input::hasFile('foto')){
+            $file=Input::file('foto');
+            $file->move(public_path().'/imagenes/conductores/fotos',$file->getClientOriginalName());
+            $conductor->foto=$file->getClientOriginalName();
+        }*/
+
+
         $conductor->save();
 
         return Redirect::to('conductor');

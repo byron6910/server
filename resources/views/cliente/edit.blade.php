@@ -4,15 +4,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Editar Cliente: {{$cliente->ci}} </h3>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+            @include('Mensajes.error')
 
             {{!!Form::model($cliente,['method'=>'PATCH','route'=>['cliente.update',$cliente->ci],'files'=>'true'])!!}}
             {{Form::token()}}

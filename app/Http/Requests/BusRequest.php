@@ -28,7 +28,7 @@ class BusRequest extends FormRequest
             'id_bus'=>'max:6|required',
             'marca'=>'required',
             'capacidad'=>'required',
-            'condicion'=>'required',
+            'condicion'=>'required|in:0,1',
             'id_cooperativa'=>'required'
         ];
     }

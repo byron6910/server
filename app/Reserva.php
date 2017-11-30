@@ -9,7 +9,7 @@ class Reserva extends Model
 {
     protected $table='reserva';
     protected $primaryKey='id_reserva';
-    protected $fillable=['fecha_reserva','estado','ci','id_viaje','cantidad','asiento'];
+    protected $fillable=['fecha_reserva','estado','ci','id_viaje','cantidad','asiento','id'];
     protected $hidden=['created_at','updated_at'];
     
 

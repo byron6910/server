@@ -19,17 +19,17 @@
     <link rel="shortcut icon" href="<?php echo e(asset('img/favicon.ico')); ?>">
 
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-red sidebar-mini">
     <div class="wrapper">
 
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/home" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>AD</b>V</span>
+          <span class="logo-mini"><b>BUSES</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>ADVentas</b></span>
+          <span class="logo-lg"><b>Buses</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -87,24 +87,31 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>Almacén</span>
+                <span>Datos</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Cooperativa</a></li>
+                <li ><a href="cliente"><i class="fa fa-user-circle"></i> Clientes</a></li>
+        
                 <li><a href="origen_destino"><i class="fa fa-circle-o"></i> Origen Destino</a></li>
+                <li ><a href="horario"><i class="fa fa-circle-o"></i> Horario</a></li>
+                <li><a href="viaje"><i class="fa fa-circle-o"></i> Viaje</a></li>
+         
+                
               </ul>
             </li>
             
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
-                <span>Compras</span>
+                <span>Cooperativa</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="compras/ingreso"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+               <li><a href="cooperativa"><i class="fa fa-circle-o"></i> Cooperativa</a></li>
+                <li><a href="bus"><i class="fa fa-bus"></i> Bus</a></li>  
+                <li><a href="conductor"><i class="fa fa-vcard-o"></i> Conductor</a></li>
+
               </ul>
             </li>
             <li class="treeview">
@@ -114,33 +121,22 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
+              <li><a href="reserva"><i class="fa fa-circle-o"></i> Reserva</a></li>
+              <li><a href="pago"><i class="fa fa-cc-paypal"></i>Pago</a></li>
               </ul>
             </li>
                        
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
+                <i class="fa fa-folder"></i> <span>Administracion</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="/users"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 
               </ul>
             </li>
-             <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>
+           
                         
           </ul>
         </section>
@@ -162,7 +158,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sistema de Ventas</h3>
+                  <h3 class="box-title">Sistema de Compra Venta de Pasajes</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
@@ -191,9 +187,9 @@
       <!--Fin-Contenido-->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.0
+          <b> </b> 
         </div>
-        <strong>Copyright &copy; 2015-2020 <a href="www.incanatoit.com">IncanatoIT</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2017-2020 <a href="#">Buses EC</a>.</strong> All rights reserved.
       </footer>
 
       

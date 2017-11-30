@@ -16,9 +16,9 @@ class OrigenDestinoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-public function __construct(){
-  //  $this->middleware('auth.basic',['only'=>['store','update','destroy']]);
-}
+    public function __construct(){
+        $this->middleware('auth',['only'=>['index','store','update','destroy']]);
+     }
 
     public function index(Request $request)
     {

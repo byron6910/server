@@ -4,15 +4,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Editar viaje: {{$viaje->id_viaje}} </h3>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+            @include('Mensajes.error')
 
             {{!!Form::model($viaje,['method'=>'PATCH','route'=>['viaje.update',$viaje->id_viaje]])!!}}
             {{Form::token()}}

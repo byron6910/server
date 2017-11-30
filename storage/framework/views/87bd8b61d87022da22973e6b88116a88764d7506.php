@@ -37,7 +37,7 @@
             
                <div class="form-group">
                     <label for="id_origen_destino">OrigenDestino:</label>
-                    <<select name="id_origen_destino" class="form-control">
+                    <select name="id_origen_destino" class="form-control">
                         <?php $__currentLoopData = $origenes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $origen): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php if($origen->id_origen_destino==$horario->id_origen_destino): ?>
                         <option value="<?php echo e($origen->id_origen_destino); ?> "selected> <?php echo e($origen->origen.'-'. $origen->destino); ?></option>

@@ -30,6 +30,7 @@ class CreateClientesTable extends Migration
             $table->string('foto');
             
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

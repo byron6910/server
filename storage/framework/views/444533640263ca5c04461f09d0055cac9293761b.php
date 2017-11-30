@@ -19,7 +19,8 @@
                         <th>Cantidad</th>
                         <th>Nombre</th>
                         <th>Telefono</th>    
-                        <th>Id Viaje</th>      
+                        <th>Id Viaje</th>   
+                        <th>Editado por Usuario </th>    
                         <th>Opciones</th>
                     </thead>
                     <?php $__currentLoopData = $reservas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reserva): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -32,6 +33,8 @@
                         <td> <?php echo e($reserva->Nombre); ?></td>
                         <td> <?php echo e($reserva->telefono); ?></td>                        
                         <td> <?php echo e($reserva->id_viaje); ?></td>
+                        <td> <?php echo e($reserva->id); ?></td>
+                        
                         
                         <td>
                         <a href="<?php echo e(URL::action('ReservaController@edit',$reserva->id_reserva)); ?>"><button class="btn btn-info">Editar </button></a>

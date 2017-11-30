@@ -4,15 +4,8 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Editar Bus: {{$bus->id_bus}} </h3>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+        
+            @include('Mensajes.error')
 
             {{!!Form::model($bus,['method'=>'PATCH','route'=>['bus.update',$bus->id_bus]])!!}}
             {{Form::token()}}
@@ -38,8 +31,13 @@
 
             <div class="form-group">
                 <label for="condicion">Condicion:</label>
-                <input type="text" class="form-control" value="{{$bus->condicion}}" placeholder="Escriba Condicion" name="condicion">
-
+                
+                <select name="condicion" class="form-control">
+                   
+                            <option value="1"> En circulacion </option>
+                            <option value="0"> En mantenimiento</option>
+                </select>
+               
             </div>
 
             <div class="form-group">

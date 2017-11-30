@@ -4,41 +4,36 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Nuevo Bus </h3>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-
+            @include('Mensajes.error')
             {{!!Form::open(['url'=>'bus','method'=>'POST','autocomplete'=>'off'])!!}}
             {{Form::token()}}
 
             <div class="form-group">
                 <label for="id_bus">PLACA:</label>
-                <input type="text" class="form-control" placeholder="Escriba Placa" name="id_bus">
+                <input type="text" class="form-control" value="{{old('id_bus')}}" placeholder="Escriba Placa" name="id_bus">
 
             </div>
             
             <div class="form-group">
                 <label for="marca">Marca:</label>
-                <input type="text" class="form-control" placeholder="Escriba Nombre" name="marca">
+                <input type="text" class="form-control" placeholder="Escriba Nombre" value="{{old('marca')}}" name="marca">
 
             </div>
            
 
             <div class="form-group">
                 <label for="capacidad">Capacidad:</label>
-                <input type="number" class="form-control" placeholder="Escriba Capacidad" name="capacidad">
+                <input type="number" class="form-control" placeholder="Escriba Capacidad" value="{{old('capacidad')}}" name="capacidad">
                 
             </div>
 
             <div class="form-group">
                 <label for="condicion">Condicion:</label>
-                <input type="text" class="form-control" placeholder="Escriba Condicion" name="condicion">
+                <select name="condicion" class="form-control">
+                   
+                            <option value="1"> En circulacion </option>
+                            <option value="0"> En mantenimiento</option>
+                    </select>
 
             </div>
 

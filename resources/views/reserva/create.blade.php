@@ -4,16 +4,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Nuevo Horario </h3>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-    
-            @endif
+            @include('Mensajes.error')
          </div>
     </div>
 
@@ -102,6 +93,14 @@
                         @endforeach
                     </select>
                 </div>
+        </div>
+
+      
+                @foreach($users as $user)
+                <input type="hidden" class="form-control" name="name" disable readonly value="{{$user->name}}")}}>
+                @endforeach
+          
+            
         </div>
 
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">

@@ -4,15 +4,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Editar reserva: {{$reserva->id_reserva}} </h3>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+            @include('Mensajes.error')
 
             {{!!Form::model($reserva,['method'=>'PATCH','route'=>['reserva.update',$reserva->id_reserva]])!!}}
             {{Form::token()}}
@@ -101,6 +93,10 @@
         </div>
 
             
+      
+                @foreach($users as $user)
+                <input type="hidden" class="form-control" name="name" disable readonly value="{{$user->name}}")}}>
+                @endforeach
              
             
             <div class="form-group">

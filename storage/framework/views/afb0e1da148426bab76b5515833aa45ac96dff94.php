@@ -3,15 +3,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Editar reserva: <?php echo e($reserva->id_reserva); ?> </h3>
-            <?php if(count($errors)>0): ?>
-            <div class="alert alert-danger">
-                <ul>
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </ul>
-            </div>
-            <?php endif; ?>
+            <?php echo $__env->make('Mensajes.error', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
             {<?php echo Form::model($reserva,['method'=>'PATCH','route'=>['reserva.update',$reserva->id_reserva]]); ?>}
             <?php echo e(Form::token()); ?>
@@ -101,6 +93,10 @@
         </div>
 
             
+      
+                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <input type="hidden" class="form-control" name="name" disable readonly value="<?php echo e($user->name); ?>")}}>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
              
             
             <div class="form-group">

@@ -27,7 +27,8 @@ class UserRequest extends FormRequest
             
             'name'=>'required',
             'email'=>'required|unique:cooperativa,email',
-            'password'=>'required'
+            'password'=>'required',
+            'role'=>'required|in:0,1,2'
 
         ];
     }

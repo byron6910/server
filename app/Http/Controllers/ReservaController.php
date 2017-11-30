@@ -16,6 +16,11 @@ class ReservaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+         $this->middleware('admin1',['only'=>['index','store','update','destroy']]);
+      }
+
     public function index(Request $request)
     {
         if($request){
@@ -23,8 +28,9 @@ class ReservaController extends Controller
         $reservas=DB::table('reserva as r')
         ->join('clientes as c','c.ci','=','r.ci')
         ->join('viaje as v','v.id_viaje','=','r.id_viaje')
+        ->join('users as u','u.id','=','r.id')
         
-        ->select('r.id_reserva','r.fecha_reserva','r.estado','r.cantidad','r.asiento',DB::raw('CONCAT(c.nombre," ",c.apellido) as Nombre') ,'c.telefono as telefono','v.id_viaje as id_viaje')
+        ->select('r.id_reserva','r.fecha_reserva','r.estado','r.cantidad','r.asiento',DB::raw('CONCAT(c.nombre," ",c.apellido) as Nombre') ,'c.telefono as telefono','v.id_viaje as id_viaje','u.name as id')
         ->where('r.estado','like','%'.$query.'%')
          
         ->orderBy('id_reserva','desc')
@@ -44,8 +50,8 @@ class ReservaController extends Controller
         $viajes=DB::table('viaje')->where('estado','=','1')->get();
         $reservas=DB::table('reserva')->where('estado','=','1')->get();
         $clientes=DB::table('clientes')->get();
-        
-        return view('reserva.create',['viajes'=>$viajes,'reservas'=>$reservas,'clientes'=>$clientes]);
+        $users=DB::table('users')->get();
+        return view('reserva.create',['viajes'=>$viajes,'reservas'=>$reservas,'clientes'=>$clientes,'users'=>$users]);
 
     
     }
@@ -67,7 +73,7 @@ class ReservaController extends Controller
         
         $reserva->ci=$request->get('ci');
         $reserva->id_viaje=$request->get('id_viaje');        
-        
+        $reserva->id=auth()->user()->id;
        
         
         $reserva->save();
@@ -107,8 +113,9 @@ class ReservaController extends Controller
         $reserva=Reserva::findOrFail($id);
         $clientes=DB::table('clientes')->get();
         $viajes=DB::table('viaje')->get();
+        $users=DB::table('users')->get();
         
-        return view('reserva.edit',['reserva'=>$reserva,'clientes'=>$clientes,'viajes'=>$viajes]);
+        return view('reserva.edit',['reserva'=>$reserva,'clientes'=>$clientes,'viajes'=>$viajes,'users'=>$users]);
     }
 
     /**
@@ -128,7 +135,7 @@ class ReservaController extends Controller
         
         $reserva->ci=$request->get('ci');
         $reserva->id_viaje=$request->get('id_viaje');             
-        
+        $reserva->id=auth()->user()->id;
    
         $reserva->update();
         

@@ -97,11 +97,19 @@
                     <label for="id_viaje">Viaje:</label>
                     <select name="id_viaje" class="form-control">
                         <?php $__currentLoopData = $viajes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $viaje): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($viaje->id_viaje); ?> "> <?php echo e($viaje->id_viaje.' '. $viaje->estado); ?></option>
+                        <option value="<?php echo e($viaje->id_viaje); ?> "> <?php echo e($viaje->id_viaje.'- '. $viaje->estado); ?></option>
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                 </div>
+        </div>
+
+      
+                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <input type="hidden" class="form-control" name="name" disable readonly value="<?php echo e($user->name); ?>")}}>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          
+            
         </div>
 
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">

@@ -28,6 +28,7 @@ class ReservaController extends Controller
             $reservas=DB::table('reserva as r')
             ->join('viaje as v','r.id_viaje','=','v.id_viaje')
             ->join('cliente as c','r.ci','=','c.ci')
+            
             ->join('cooperativa as co','v.id_cooperativa','=','co.id_cooperativa')
             ->join('horarios as h','v.id_horarios','=','h.id_horarios')
             ->join('origen_destino as od','v.id_origen_destino','=','od.id_origen_destino')

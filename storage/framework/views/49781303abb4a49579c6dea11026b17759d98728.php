@@ -3,27 +3,18 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Nuevo Conductor </h3>
-            <?php if(count($errors)>0): ?>
-            <div class="alert alert-danger">
-                <ul>
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </ul>
-            </div>
-    
-            <?php endif; ?>
+            <?php echo $__env->make('Mensajes.error', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
          </div>
     </div>
 
-            {<?php echo Form::open(['url'=>'conductor','method'=>'POST','autocomplete'=>'off']); ?>}
+            {<?php echo Form::open(['url'=>'conductor','method'=>'POST','autocomplete'=>'off','file'=>'true']); ?>}
             <?php echo e(Form::token()); ?>
 
     <div class="row">
         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
             <div class="form-group">
                 <label for="ci">CI:</label>
-                <input type="text" class="form-control" placeholder="Escriba CI" name="id_conductor" required value="<?php echo e(old('ci')); ?>">
+                <input type="text" class="form-control" placeholder="Escriba CI" name="id_conductor" required value="<?php echo e(old('id_conductor')); ?>">
 
             </div>
         </div>
@@ -73,6 +64,7 @@
 
         <div class="form-group">
                 <label for="foto">Foto:</label>
+                <!-- <input type="file" class="form-control"  name="foto" id="foto" accept="image/*"> -->
                 <input type="file" class="form-control"  name="foto">
                 
             </div>

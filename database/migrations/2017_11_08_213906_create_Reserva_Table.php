@@ -24,9 +24,9 @@ class CreateReservaTable extends Migration
             $table->foreign('ci')->references('ci')->on('clientes')
             ->onDelete('cascade');
 
-            // $table->integer('id')->unsigned();
-            // $table->foreign('id')->references('id')->on('users')
-            // ->onDelete('cascade');
+             $table->integer('id')->unsigned();
+             $table->foreign('id')->references('id')->on('users')
+             ->onDelete('cascade');
 
             $table->integer('id_viaje')->length(10)->unsigned();
             $table->foreign('id_viaje')->references('id_viaje')->on('viaje')

@@ -3,15 +3,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Editar Conductor: <?php echo e($conductor->id_conductor); ?> </h3>
-            <?php if(count($errors)>0): ?>
-            <div class="alert alert-danger">
-                <ul>
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </ul>
-            </div>
-            <?php endif; ?>
+            <?php echo $__env->make('Mensajes.error', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
             {<?php echo Form::model($conductor,['method'=>'PATCH','route'=>['conductor.update',$conductor->id_conductor]]); ?>}
             <?php echo e(Form::token()); ?>

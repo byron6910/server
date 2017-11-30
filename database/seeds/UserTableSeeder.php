@@ -22,7 +22,9 @@ class UserTableSeeder extends Seeder
                 //'ci'=>$faker->randomNumber(9,false),
                 'name'=>$faker->firstName(),
                 'email'=>$faker->email(),
-           
+                'role'=>$faker->numberBetween($min = 0, $max = 2),
+                'foto'=>$faker->word(),
+                
                 'password'=>$faker->word()
             
 

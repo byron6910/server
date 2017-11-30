@@ -30,7 +30,7 @@ class ClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'ci'=>'max:10|required|unique:clientes,correo',            
+            'ci'=>'digits:10|required|unique:clientes,correo',            
            
             'nombre'=>'required',
             'apellido'=>'required',

@@ -20,7 +20,8 @@
                         <th>Cantidad</th>
                         <th>Nombre</th>
                         <th>Telefono</th>    
-                        <th>Id Viaje</th>      
+                        <th>Id Viaje</th>   
+                        <th>Editado por Usuario </th>    
                         <th>Opciones</th>
                     </thead>
                     @foreach($reservas as $reserva)
@@ -33,6 +34,8 @@
                         <td> {{$reserva->Nombre}}</td>
                         <td> {{$reserva->telefono}}</td>                        
                         <td> {{$reserva->id_viaje}}</td>
+                        <td> {{$reserva->id}}</td>
+                        
                         
                         <td>
                         <a href="{{URL::action('ReservaController@edit',$reserva->id_reserva)}}"><button class="btn btn-info">Editar </button></a>

@@ -22,12 +22,12 @@ class ReservaSeeder extends Seeder
         $faker=Faker::create();
         $cantidad=Cliente::all()->count();
         $cantidad1=Viaje::all()->count();
-       // $cantidad2=User::all()->count();
+        $cantidad2=User::all()->count();
         
         
         for($i=0;$i<$cantidad;$i++){
             for($j=0;$j<$cantidad1;$j++){
-               // for($k=0;$k<$cantidad2;$k++){
+                for($k=0;$k<$cantidad2;$k++){
                 
 
             Reserva::create([
@@ -41,11 +41,11 @@ class ReservaSeeder extends Seeder
                 
                 'ci'=>$faker->numberBetween(1,$cantidad),
                 'id_viaje'=>$faker->numberBetween(1,$cantidad1),
-              //  'id'=>$faker->numberBetween(1,$cantidad2)
+                'id'=>$faker->numberBetween(1,$cantidad2)
                 
 
             ]);
-  //  }
+    }
 }
         } 
     }

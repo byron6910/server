@@ -18,6 +18,10 @@ class HorariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+       $this->middleware('admin1',['only'=>['store','update','destroy']]);
+     }
      public function index(Request $request)
      {
          if($request){

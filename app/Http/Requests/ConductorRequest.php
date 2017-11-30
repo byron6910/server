@@ -30,7 +30,9 @@ class ConductorRequest extends FormRequest
             'telefono'=>'max:10|required',
             'direccion'=>'required',
             'correo'=>'required|email|unique:conductor,id_conductor',
-            'foto'=>'mimes:jpeg,bmp,png',//formato archivos
+//            'foto'=>'mimes:jpeg,bmp,png',//formato archivos
+            'foto'=>'required',//formato archivos
+            
             'id_bus'=>'required'
 
 

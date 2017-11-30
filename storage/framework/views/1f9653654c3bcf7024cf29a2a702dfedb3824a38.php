@@ -3,15 +3,8 @@
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
             <h3> Editar Bus: <?php echo e($bus->id_bus); ?> </h3>
-            <?php if(count($errors)>0): ?>
-            <div class="alert alert-danger">
-                <ul>
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </ul>
-            </div>
-            <?php endif; ?>
+        
+            <?php echo $__env->make('Mensajes.error', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
             {<?php echo Form::model($bus,['method'=>'PATCH','route'=>['bus.update',$bus->id_bus]]); ?>}
             <?php echo e(Form::token()); ?>
@@ -38,8 +31,13 @@
 
             <div class="form-group">
                 <label for="condicion">Condicion:</label>
-                <input type="text" class="form-control" value="<?php echo e($bus->condicion); ?>" placeholder="Escriba Condicion" name="condicion">
-
+                
+                <select name="condicion" class="form-control">
+                   
+                            <option value="1"> En circulacion </option>
+                            <option value="0"> En mantenimiento</option>
+                </select>
+               
             </div>
 
             <div class="form-group">
