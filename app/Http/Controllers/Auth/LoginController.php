@@ -27,7 +27,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
-    /**
+    /**0000000007286227
      * Create a new controller instance.
      *
      * @return void
