@@ -28,7 +28,7 @@
 
                             <div class="col-md-6">
                                 <input id="code_number" type="number" class="form-control" name="code_number" value="{{ old('code_number') }}" required autofocus>
-
+                               
                                 @if ($errors->has('code_number'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('code_number') }}</strong>

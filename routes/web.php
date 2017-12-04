@@ -32,6 +32,8 @@ Route::get('/register/verify/', 'VerificacionController@get_Confirm_phone');
 Route::post('/register/verify/', 'VerificacionController@post_Confirm_phone');
 
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

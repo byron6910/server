@@ -26,8 +26,8 @@
                             <label for="code_number" class="col-md-4 control-label">Codigo Pais</label>
 
                             <div class="col-md-6">
-                                <input id="code_number" type="number" class="form-control" name="code_number" value="<?php echo e(old('code_number')); ?>" required autofocus>
-
+                                <!-- <input id="code_number" type="number" class="form-control" name="code_number" value="<?php echo e(old('code_number')); ?>" required autofocus> -->
+                                <select id="authy-countries" name="country_code"></select>
                                 <?php if($errors->has('code_number')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('code_number')); ?></strong>

@@ -40,7 +40,7 @@ class VerificacionController extends Controller
             $user->save();
 
             $this->authyApi->requestSms($user->authy_id);
-            return redirect('/register/phone')->with('notification','Te hemos enviado correo de confirmacion SMS');
+            return redirect('/register/token')->with('notification','Te hemos enviado correo de confirmacion SMS');
 
         }else
         {
@@ -57,9 +57,9 @@ class VerificacionController extends Controller
 
         $user=Auth::user();
         if($user->verified){
-            return redirect('/home');//ya confirmado el sms
+            return redirect('/register');//ya confirmado el sms
         }
-        return view('register.confirm_phone');
+        return view('user.token');
     }
 
         
@@ -68,7 +68,22 @@ class VerificacionController extends Controller
         $token=$request->input('token');
         $user=Auth::user();
         $verificacion=$this->authyApi->verifyToken($user->authy_id,$token);
-        
+
+        if($verificacion->ok()){
+            $user->verified=true;
+            $user->save();
+
+            $this->sendSmsNotification($this->client,$user);
+
+            return redirect('/register')->with('notification','Telefono verificado');
+
+        }else
+        {
+            $error=$this->getAuthyErrors($verificacion->errors());
+            return redirect('/register')->withErrors(new MessageBag($errors));
+
+        }
+
 
     }
         
